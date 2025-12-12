@@ -50,6 +50,9 @@ body{
     box-shadow: 1px 1px 10px #80808078;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    p{
+      margin: 0;
+    }
 }
 .ant-card{
     // width: 23% !important;
