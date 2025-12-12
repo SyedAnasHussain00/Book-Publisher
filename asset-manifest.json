@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Movie-App/static/css/main.01da2706.css",
-    "main.js": "/Movie-App/static/js/main.f08ed1cc.js",
-    "index.html": "/Movie-App/index.html",
-    "main.01da2706.css.map": "/Movie-App/static/css/main.01da2706.css.map",
-    "main.f08ed1cc.js.map": "/Movie-App/static/js/main.f08ed1cc.js.map"
+    "main.css": "/Book-Publisher/static/css/main.01da2706.css",
+    "main.js": "/Book-Publisher/static/js/main.f08ed1cc.js",
+    "index.html": "/Book-Publisher/index.html",
+    "main.01da2706.css.map": "/Book-Publisher/static/css/main.01da2706.css.map",
+    "main.f08ed1cc.js.map": "/Book-Publisher/static/js/main.f08ed1cc.js.map"
   },
   "entrypoints": [
     "static/css/main.01da2706.css",
