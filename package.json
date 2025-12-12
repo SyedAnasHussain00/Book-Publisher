@@ -11,8 +11,11 @@
     "antd": "^6.1.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
+    "react-hot-toast": "^2.6.0",
     "react-scripts": "5.0.1",
+    "react-toastify": "^11.0.5",
     "sass": "^1.96.0",
+    "sweetalert2": "^11.26.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

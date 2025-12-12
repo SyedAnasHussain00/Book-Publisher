@@ -6,6 +6,7 @@ import { Form, Input } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
 import { useState } from "react";
+import { Toaster, toast } from 'react-hot-toast';
 
 const { Meta } = Card;
 
@@ -15,16 +16,19 @@ function App() {
   const [isbn, setIsbn] = useState();
   const [entireBooks, setEntireBooks] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [openedBookIndex, setOpenedBookIndex] = useState(null);
+
 
 
   const formSubmitHandler = () => {
     if(!bookName){
-      alert("Enter Valid Book Name");
+      toast.error("Please enter a valid book name.");
     }else if(!isbn){
-      alert("Enter Valid isbn");
+      toast.error("Please enter a valid ISBN.");
     }
     else{
       setEntireBooks((prev) => [...prev, {name: bookName, author: authorName, isbn: isbn}]);
+      toast.success("Book Added");
       setBookName("")
       setAuthorName("")
       setIsbn()
@@ -32,6 +36,7 @@ function App() {
   }
   return (
     <div className="App">
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="container">
         <div className="navbar">
           <h1>Publish Pro</h1>
@@ -60,22 +65,29 @@ function App() {
             <p>No Book Yet</p>
           ) : (
             entireBooks.slice().reverse().map((book, index) => (
-              <Card
-                key={index}
-                actions={[
-                  <DeleteOutlined key="delete" />,
-                  <EditOutlined key="edit" />,
-                ]}
-              >
-                <Meta
-                  avatar={
-                    <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnnDufRX2LYg6HbtP4xlfeewDVNlPHa9oxEA&s" />
-                  }
-                  title={`${book.name} - #${book.isbn}`}
-                  description={book.author || "Unknown Author"}
-                />
-                {/* <p><strong>ISBN:</strong> {book.isbn}</p> */}
-              </Card>
+              <div className={`book-card ${openedBookIndex === index ? "open" : ""}`} key={index} onClick={() => setOpenedBookIndex(openedBookIndex === index ? null : index)}>
+                <div className="book-inner">
+
+                  <div className="book-front">
+                    <p>{book.name}</p>
+                  </div>
+
+                  <div className="book-back">
+                    <Meta className="card-items"
+                      avatar={
+                        <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnnDufRX2LYg6HbtP4xlfeewDVNlPHa9oxEA&s" />
+                      }
+                      title={`${book.name} - #${book.isbn}`}
+                      description={book.author || "Unknown Author"}
+                    />
+                    <div className="icons">
+                      <DeleteOutlined />
+                      <EditOutlined />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
             ))
           )}
         </div>
